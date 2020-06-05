@@ -40,6 +40,9 @@ namespace StuffToDo.ViewModel
 			StreamWriter streamWriter = new StreamWriter(url);
 			streamWriter.Write(TekstNotatki);
 			streamWriter.Close();
+
+			AktualnaNotatka = "";
+			App.Current.MainWindow.Content = new MenuGlowneView();
 		}
 		public string AktualnaNotatka="";
 		private string DajNowyNumerNotatki(string dir)
