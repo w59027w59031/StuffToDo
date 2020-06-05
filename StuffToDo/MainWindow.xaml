@@ -1,0 +1,15 @@
+﻿<Window x:Class="StuffToDo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:viewModel="clr-namespace:StuffToDo.ViewModel"
+        xmlns:view="clr-namespace:StuffToDo.View"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StuffToDo"
+        mc:Ignorable="d"
+        Title="StuffToDo" Height="450" Width="800"
+		d:DataContext="{d:DesignInstance d:Type=viewModel:MenuGlowneViewModel, IsDesignTimeCreatable=False}">
+	<Grid>
+		<view:MenuGlowneView/>
+	</Grid>
+</Window>
