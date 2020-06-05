@@ -18,6 +18,7 @@ namespace StuffToDo.ViewModel
 		{
 			DodajNotatke = new RelayCommand(o => { DodajNotatkeHandler(); }, o => true);
 			Wstecz = new RelayCommand(o => { WsteczHandler(); }, o => true);
+			//test
 		}
 
 		private void WsteczHandler()
