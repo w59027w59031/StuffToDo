@@ -29,7 +29,7 @@ namespace StuffToDo.ViewModel
 		public void DodajNotatkeHandler()
 		{
 			string Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
-				"\\StuffToDo";
+				"\\StuffToDo\\Notatki";
 			if (!Directory.Exists(Dir))
 			{
 				Directory.CreateDirectory(Dir);
