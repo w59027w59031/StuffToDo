@@ -72,7 +72,19 @@
     </ApplicationDefinition>
     <Compile Include="Assets\Kolory.cs" />
     <Compile Include="ComboBoxItem.cs" />
-    <Compile Include="ViewModel\NotatkiViewModel.cs" />
+    <Compile Include="ViewModel\DodajZadanieViewModel.cs" />
+    <Compile Include="ViewModel\WyswietlNotatkeViewModel.cs" />
+    <Compile Include="ViewModel\WyswietlZadaniaViewModel.cs" />
+    <Compile Include="ViewModel\DodajNotatkeViewModel.cs" />
+    <Compile Include="View\WyswietlZadaniaView.xaml.cs">
+      <DependentUpon>WyswietlZadaniaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DodajZadanieView.xaml.cs">
+      <DependentUpon>DodajZadanieView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WyswietlNotatkeView.xaml.cs">
+      <DependentUpon>WyswietlNotatkeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MenuGlowneView.xaml.cs">
       <DependentUpon>MenuGlowneView.xaml</DependentUpon>
     </Compile>
@@ -81,12 +93,24 @@
     <Compile Include="ViewModel\UstawieniaViewModel.cs" />
     <Compile Include="ViewModel\MenuGlowneViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
-    <Compile Include="View\NotatkiView.xaml.cs">
-      <DependentUpon>NotatkiView.xaml</DependentUpon>
+    <Compile Include="View\DodajNotatkeView.xaml.cs">
+      <DependentUpon>DodajNotatkeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UstawieniaView.xaml.cs">
       <DependentUpon>UstawieniaView.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\WyswietlZadaniaView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\DodajZadanieView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\WyswietlNotatkeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\MenuGlowneView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -103,7 +127,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\NotatkiView.xaml">
+    <Page Include="View\DodajNotatkeView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="StuffToDo.View.NotatkiView"
+﻿<UserControl x:Class="StuffToDo.View.WyswietlNotatkeView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,14 +7,14 @@
              xmlns:viewModel="clr-namespace:StuffToDo.ViewModel"
 			 mc:Ignorable="d"
 			 Height="450" Width="800"
-			 d:DataContext="{d:DesignInstance d:Type=viewModel:NotatkiViewModel, IsDesignTimeCreatable=False}">
+			 d:DataContext="{d:DesignInstance d:Type=viewModel:WyswietlNotatkeViewModel, IsDesignTimeCreatable=False}">
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*"/>
 			<RowDefinition Height="3*"/>
 			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
-		<Label Content="Nowa Notatka" FontSize="20px" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+		<Label Content="Lista notatek" FontSize="20px" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 		<TextBox Text="{Binding TekstNotatki}"
 					 FontSize="15px" 
 					 Grid.Row="1"/>

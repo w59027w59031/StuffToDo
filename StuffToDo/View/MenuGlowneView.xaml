@@ -17,11 +17,13 @@
 			<RowDefinition Height="*"/>
 			<RowDefinition Height="30px"/>
 		</Grid.RowDefinitions>
-		<Label Content="Sup!! Mate!!!"/>
+		<Label Content="Sup!! Mate!!! || StuffToDo"/>
 		<StackPanel Grid.Row="1">
 			<Button Content="Oś czasu" Command="{Binding PrzejdzDoOsiCzasu}"/>
-			<Button Content="Notatki" Command="{Binding PrzejdzDoNotatek}"/>
-			<Button Content="Lista zadań" Command="{Binding PrzejdzDoListyZadan}"/>
+            <Button Content="Dodaj notatke" Command="{Binding PrzejdzDoDodawaniaNotatki}"/>
+            <Button Content="Wyświetl listę notatek" Command="{Binding PrzejdzDoNotatek}"/>
+            <Button Content="Dodaj zadanie" Command="{Binding PrzejdzDoDodawaniaZadania}"/>
+            <Button Content="Wyświetl listę zadań" Command="{Binding PrzejdzDoListyZadan}"/>
 			<Button Content="Ustawienia" Command="{Binding PrzejdzDoUstawien}"/>
 			<Button Content="Wyjdź" Command="{Binding Zamknij}"/>
 		</StackPanel>

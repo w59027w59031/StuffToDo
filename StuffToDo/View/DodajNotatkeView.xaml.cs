@@ -19,11 +19,11 @@ namespace StuffToDo.View
 	/// <summary>
 	/// Interaction logic for UstawieniaView.xaml
 	/// </summary>
-	public partial class NotatkiView : UserControl
+	public partial class DodajNotatkeView : UserControl
 	{
-		public NotatkiView()
+		public DodajNotatkeView()
 		{
-			DataContext = new NotatkiViewModel();
+			DataContext = new DodajNotatkeViewModel();
 			InitializeComponent();
 		}
 	}

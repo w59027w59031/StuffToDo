@@ -12,9 +12,9 @@ using StuffToDo.View;
 
 namespace StuffToDo.ViewModel
 {
-	public class NotatkiViewModel : INotifyPropertyChanged
+	public class DodajNotatkeViewModel : INotifyPropertyChanged
 	{
-		public NotatkiViewModel()
+		public DodajNotatkeViewModel()
 		{
 			DodajNotatke = new RelayCommand(o => { DodajNotatkeHandler(); }, o => true);
 			Wstecz = new RelayCommand(o => { WsteczHandler(); }, o => true);
