@@ -43,7 +43,7 @@ namespace StuffToDo.ViewModel
 		{
 			Notatki = new ObservableCollection<Notatka_Item>();
 
-			string Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +	"\\StuffToDo\\Notatki";
+			string Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\StuffToDo\\Notatki";
 			string[] pliki = Directory.GetFiles(Dir);
 
 			foreach (string plik in pliki)
@@ -52,23 +52,37 @@ namespace StuffToDo.ViewModel
 				string zawartoscPliku = streamReader.ReadToEnd();
 				streamReader.Close();
 
+				int ostatniElement = (zawartoscPliku.Split(new string[] { "\n" }, StringSplitOptions.None).Length - 1);
+				string[] linie = zawartoscPliku.Split(new string[] { "\n" }, StringSplitOptions.None);
+				while (linie[linie.Length-1].Length < 1)
+				{
+					zawartoscPliku = zawartoscPliku.Substring(0, zawartoscPliku.LastIndexOf(Environment.NewLine));
+					linie = zawartoscPliku.Split(new string[] { "\n" }, StringSplitOptions.None);
+				}
+
 				string tresc = zawartoscPliku.Substring(0, zawartoscPliku.LastIndexOf(Environment.NewLine));
 				tresc = tresc.Substring(0, tresc.LastIndexOf(Environment.NewLine));
 
 				DateTime data_od = new DateTime();
-				data_od.Date.AddYears(int.Parse(zawartoscPliku.Split(new string[] { "\n" }, StringSplitOptions.None)[zawartoscPliku.Split(new string[] { "\n" }, StringSplitOptions.None).Length - 2].Split('.')[2]));
-				data_od.Date.AddMonths(int.Parse(zawartoscPliku.Split(new string[] { "\n" }, StringSplitOptions.None)[zawartoscPliku.Split(new string[] { "\n" }, StringSplitOptions.None).Length - 2].Split('.')[1]));
-				data_od.Date.AddDays(int.Parse(zawartoscPliku.Split(new string[] { "\n" }, StringSplitOptions.None)[zawartoscPliku.Split(new string[] { "\n" }, StringSplitOptions.None).Length - 2].Split('.')[0]));
-
-
 				DateTime data_do = new DateTime();
-				data_do.Date.AddYears(int.Parse(zawartoscPliku.Split(new string[] { "\n" }, StringSplitOptions.None)[zawartoscPliku.Split(new string[] { "\n" }, StringSplitOptions.None).Length - 1].Split('.')[2]));
-				data_do.Date.AddMonths(int.Parse(zawartoscPliku.Split(new string[] { "\n" }, StringSplitOptions.None)[zawartoscPliku.Split(new string[] { "\n" }, StringSplitOptions.None).Length - 1].Split('.')[1]));
-				data_do.Date.AddDays(int.Parse(zawartoscPliku.Split(new string[] { "\n" }, StringSplitOptions.None)[zawartoscPliku.Split(new string[] { "\n" }, StringSplitOptions.None).Length - 1].Split('.')[0]));
+
+				string data = linie[linie.Length - 2];
+				string rok = data.Split('.')[2];
+				string miesiac = data.Split('.')[1];
+				string dzien = data.Split('.')[0];
+
+				data_od = new DateTime(int.Parse(rok), int.Parse(miesiac), int.Parse(dzien));
+
+				data = linie[linie.Length - 1];
+				rok = data.Split('.')[2];
+				miesiac = data.Split('.')[1];
+				dzien = data.Split('.')[0];
+
+				data_do = new DateTime(int.Parse(rok), int.Parse(miesiac), int.Parse(dzien));
 
 				Notatki.Add(new Notatka_Item()
 				{
-					Tytul = plik.Split(new string[] { "\\" }, StringSplitOptions.None)[plik.Split(new string[] { "\\" }, StringSplitOptions.None).Length-1].Split('.')[0],
+					Tytul = plik.Split(new string[] { "\\" }, StringSplitOptions.None)[plik.Split(new string[] { "\\" }, StringSplitOptions.None).Length - 1].Split('.')[0],
 					Tresc = tresc,
 					Data_od = data_od,
 					Data_do = data_do

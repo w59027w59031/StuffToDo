@@ -18,7 +18,9 @@ namespace StuffToDo.ViewModel
 		{
 			DodajNotatke = new RelayCommand(o => { DodajNotatkeHandler(); }, o => true);
 			Wstecz = new RelayCommand(o => { WsteczHandler(); }, o => true);
-			//test
+
+			Data_od = DateTime.Today;
+			Data_do = DateTime.Today;
 		}
 
 		private void WsteczHandler()
@@ -37,17 +39,34 @@ namespace StuffToDo.ViewModel
 				{
 					Directory.CreateDirectory(Dir);
 				}
-				string url = Dir + "\\" + DajNowyNumerNotatki(Dir) + ".txt";
+				string url = "";
+				bool NazwaWolna = true;
+				if (TytulNotatki == "")
+				{
+					url = Dir + "\\" + DajNowyNumerNotatki(Dir) + ".txt";
+				}
+				else
+				{
+					url = Dir + "\\" + TytulNotatki + ".txt";
+					if (File.Exists(url))
+					{
+						NazwaWolna = false;
+						System.Windows.MessageBox.Show("Taka notatka już istnieje.");
+					}
+				}
 
-				StreamWriter streamWriter = new StreamWriter(url);
-				streamWriter.Write(TekstNotatki);
-				streamWriter.WriteLine("");
-				streamWriter.WriteLine(Data_od.Date.Day + "." + Data_od.Date.Month + "." + Data_od.Date.Year);
-				streamWriter.WriteLine(Data_do.Date.Day + "." + Data_do.Date.Month + "." + Data_do.Date.Year);
-				streamWriter.Close();
+				if (NazwaWolna)
+				{
+					StreamWriter streamWriter = new StreamWriter(url);
+					streamWriter.Write(TekstNotatki);
+					streamWriter.WriteLine("");
+					streamWriter.WriteLine(Data_od.Value.Date.Day + "." + Data_od.Value.Date.Month + "." + Data_od.Value.Date.Year);
+					streamWriter.WriteLine(Data_do.Value.Date.Day + "." + Data_do.Value.Date.Month + "." + Data_do.Value.Date.Year);
+					streamWriter.Close();
 
-				AktualnaNotatka = "";
-				App.Current.MainWindow.Content = new MenuGlowneView();
+					AktualnaNotatka = "";
+					App.Current.MainWindow.Content = new MenuGlowneView();
+				}
 			}
 			catch (Exception ex)
 			{
@@ -86,6 +105,13 @@ namespace StuffToDo.ViewModel
 			return res;
 		}
 
+		private string tytulNotatki;
+		public string TytulNotatki
+		{
+			get { return tytulNotatki; }
+			set { tytulNotatki = value; OnPropertyRaised("TytulNotatki"); }
+		}
+
 		private string tekstNotatki;
 		public string TekstNotatki
 		{
@@ -93,19 +119,20 @@ namespace StuffToDo.ViewModel
 			set { tekstNotatki = value; OnPropertyRaised("TekstNotatki"); }
 		}
 
-		private DateTime data_od;
-		public DateTime Data_od
+		private DateTime? data_od;
+		public DateTime? Data_od
 		{
 			get { return data_od; }
 			set { data_od = value; OnPropertyRaised("Data_od"); }
 		}
 
-		private DateTime data_do;
-		public DateTime Data_do
+		private DateTime? data_do;
+		public DateTime? Data_do
 		{
 			get { return data_do; }
 			set { data_do = value; OnPropertyRaised("Data_do"); }
 		}
+
 		public RelayCommand DodajNotatke { get; set; }
 		public RelayCommand Wstecz { get; set; }
 
