@@ -72,10 +72,14 @@
     </ApplicationDefinition>
     <Compile Include="Assets\Kolory.cs" />
     <Compile Include="ComboBoxItem.cs" />
+    <Compile Include="Notatka_Item.cs" />
     <Compile Include="ViewModel\DodajZadanieViewModel.cs" />
     <Compile Include="ViewModel\WyswietlNotatkeViewModel.cs" />
     <Compile Include="ViewModel\WyswietlZadaniaViewModel.cs" />
     <Compile Include="ViewModel\DodajNotatkeViewModel.cs" />
+    <Compile Include="View\Kontrolki\Notatka.xaml.cs">
+      <DependentUpon>Notatka.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\WyswietlZadaniaView.xaml.cs">
       <DependentUpon>WyswietlZadaniaView.xaml</DependentUpon>
     </Compile>
@@ -99,6 +103,11 @@
     <Compile Include="View\UstawieniaView.xaml.cs">
       <DependentUpon>UstawieniaView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Wykonano_Zadanie_Message.cs" />
+    <Page Include="View\Kontrolki\Notatka.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\WyswietlZadaniaView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

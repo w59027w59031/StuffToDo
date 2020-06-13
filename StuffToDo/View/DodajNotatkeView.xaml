@@ -12,13 +12,25 @@
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*"/>
 			<RowDefinition Height="3*"/>
+			<RowDefinition Height="30px"/>
 			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
 		<Label Content="Nowa Notatka" FontSize="20px" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 		<TextBox Text="{Binding TekstNotatki}"
 					 FontSize="15px" 
 					 Grid.Row="1"/>
-		<StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right">
+		<StackPanel Orientation="Horizontal" Grid.Row="2">
+			<Label Content="Data od"/>
+			<DatePicker Text="{Binding Data_od}"
+					 FontSize="15px" 
+					 Grid.Row="1"/>
+			<Label Content="Data do"/>
+				<DatePicker Text="{Binding Data_do}"
+					 FontSize="15px" 
+					 Grid.Row="1"/>
+		</StackPanel>
+		
+		<StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Right">
 			<Button Content="Dodaj notatke" Command="{Binding DodajNotatke}" Height="30px" Margin="5"/>
 			<Button Content="Wstecz" Command="{Binding Wstecz}" Height="30px" Margin="5"/>
 		</StackPanel>

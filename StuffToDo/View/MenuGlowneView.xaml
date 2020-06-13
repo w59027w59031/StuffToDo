@@ -13,19 +13,19 @@
 			<ColumnDefinition Width="*"/>
 		</Grid.ColumnDefinitions>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="30px"/>
+			<RowDefinition Height="auto"/>
 			<RowDefinition Height="*"/>
-			<RowDefinition Height="30px"/>
+			<RowDefinition Height="auto"/>
 		</Grid.RowDefinitions>
-		<Label Content="Sup!! Mate!!! || StuffToDo"/>
-		<StackPanel Grid.Row="1">
-			<Button Content="Oś czasu" Command="{Binding PrzejdzDoOsiCzasu}"/>
-            <Button Content="Dodaj notatke" Command="{Binding PrzejdzDoDodawaniaNotatki}"/>
-            <Button Content="Wyświetl listę notatek" Command="{Binding PrzejdzDoNotatek}"/>
-            <Button Content="Dodaj zadanie" Command="{Binding PrzejdzDoDodawaniaZadania}"/>
-            <Button Content="Wyświetl listę zadań" Command="{Binding PrzejdzDoListyZadan}"/>
-			<Button Content="Ustawienia" Command="{Binding PrzejdzDoUstawien}"/>
-			<Button Content="Wyjdź" Command="{Binding Zamknij}"/>
+		<Label Content="Sup!! Mate!!! || StuffToDo" FontSize="30px" Foreground="DarkGoldenrod"/>
+		<StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center">
+			<Button Content="Oś czasu" Command="{Binding PrzejdzDoOsiCzasu}" Height="30px"/>
+			<Button Content="Dodaj notatke" Command="{Binding PrzejdzDoDodawaniaNotatki}" Height="30px"/>
+			<Button Content="Wyświetl listę notatek" Command="{Binding PrzejdzDoNotatek}" Height="30px"/>
+			<Button Content="Dodaj zadanie" Command="{Binding PrzejdzDoDodawaniaZadania}" Height="30px"/>
+			<Button Content="Wyświetl listę zadań" Command="{Binding PrzejdzDoListyZadan}" Height="30px"/>
+			<Button Content="Ustawienia" Command="{Binding PrzejdzDoUstawien}" Height="30px"/>
+			<Button Content="Wyjdź" Command="{Binding Zamknij}" Height="30px"/>
 		</StackPanel>
 
 	</Grid>

@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="StuffToDo.View.Kontrolki.Notatka"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:StuffToDo.View"
+			 mc:Ignorable="d"
+			 Height="425" Width="380">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="45px"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="25px"/>
+			<RowDefinition Height="25px"/>
+		</Grid.RowDefinitions>
+		<Label Content="{Binding Tytul, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+			   x:Name="x_Tytul" 
+			   FontSize="30px" 
+			   HorizontalContentAlignment="Center" 
+			   VerticalContentAlignment="Center" 
+			   Foreground="DarkGoldenrod"/>
+		<TextBox Text="{Binding Tresc, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+			   x:Name="x_Tresc"
+				 Grid.Row="1"/>
+		<StackPanel Grid.Row="2" Orientation="Horizontal">
+			<DatePickerTextBox Text="{Binding Data_od, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+			   x:Name="x_Data_od" Width="200px"/>
+			<DatePickerTextBox Text="{Binding Data_do, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+			   x:Name="x_Data_do" Width="200px"/>
+		</StackPanel>
+		<Button Grid.Row="3" Content="Zrobione" Click="Button_Click"/>
+	</Grid>
+</UserControl>
