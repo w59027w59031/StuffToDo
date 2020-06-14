@@ -7,9 +7,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StuffToDo"
         mc:Ignorable="d"
-        Title="StuffToDo" Height="450" Width="800"
-		d:DataContext="{d:DesignInstance d:Type=viewModel:MenuGlowneViewModel, IsDesignTimeCreatable=False}">
+        Title="StuffToDo" Height="550" Width="850"
+		d:DataContext="{d:DesignInstance d:Type=viewModel:MenuGlowneViewModel, IsDesignTimeCreatable=False}"
+		Background="{Binding KolorTla, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 	<Grid>
-		<view:MenuGlowneView/>
+		<view:MenuGlowneView Width="850" Height="550"/>
 	</Grid>
 </Window>

@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
@@ -14,20 +15,27 @@ using StuffToDo.View;
 
 namespace StuffToDo.ViewModel
 {
-	public class WyswietlNotatkeViewModel
+	public class OsCzasuViewModel
 	{
-		public WyswietlNotatkeViewModel()
+		public OsCzasuViewModel()
 		{
 			Load();
 			RegisterMessages();
 			Commands();
 		}
 
-		private ObservableCollection<Notatka_Item> notatki;
-		public ObservableCollection<Notatka_Item> Notatki
+		private ObservableCollection<Node_Item> nodey;
+		public ObservableCollection<Node_Item> Nodey
 		{
-			get { return notatki; }
-			set { notatki = value; OnPropertyRaised("Notatki"); }
+			get { return nodey; }
+			set { nodey = value; OnPropertyRaised("Nodey"); }
+		}
+
+		private DateTime najstarsza_data;
+		public DateTime Najstarsza_data
+		{
+			get { return najstarsza_data; }
+			set { najstarsza_data = value; OnPropertyRaised("Najstarsza_data"); }
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -41,9 +49,17 @@ namespace StuffToDo.ViewModel
 
 		private void Load()
 		{
-			Notatki = new ObservableCollection<Notatka_Item>();
+			Najstarsza_data = DateTime.Today;
 
-			string Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\StuffToDo\\Notatki";
+			Nodey = new ObservableCollection<Node_Item>();
+
+			string Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\StuffToDo\\Zadania";
+
+			if (!Directory.Exists(Dir))
+			{
+				Directory.CreateDirectory(Dir);
+			}
+
 			string[] pliki = Directory.GetFiles(Dir);
 
 			foreach (string plik in pliki)
@@ -54,7 +70,7 @@ namespace StuffToDo.ViewModel
 
 				int ostatniElement = (zawartoscPliku.Split(new string[] { "\n" }, StringSplitOptions.None).Length - 1);
 				string[] linie = zawartoscPliku.Split(new string[] { "\n" }, StringSplitOptions.None);
-				while (linie[linie.Length-1].Length < 1)
+				while (linie[linie.Length - 1].Length < 1)
 				{
 					zawartoscPliku = zawartoscPliku.Substring(0, zawartoscPliku.LastIndexOf(Environment.NewLine));
 					linie = zawartoscPliku.Split(new string[] { "\n" }, StringSplitOptions.None);
@@ -62,31 +78,52 @@ namespace StuffToDo.ViewModel
 
 				string tresc = zawartoscPliku.Substring(0, zawartoscPliku.LastIndexOf(Environment.NewLine));
 				tresc = tresc.Substring(0, tresc.LastIndexOf(Environment.NewLine));
+				tresc = tresc.Substring(0, tresc.LastIndexOf(Environment.NewLine));
+
+				bool taknie = false;
+
+				if (linie[linie.Length - 3] != "")
+				{
+					taknie = linie[linie.Length - 3].Contains("tak");
+				}
 
 				DateTime data_od = new DateTime();
 				DateTime data_do = new DateTime();
 
+
 				string data = linie[linie.Length - 2];
-				string rok = data.Split('.')[2];
-				string miesiac = data.Split('.')[1];
-				string dzien = data.Split('.')[0];
+
+				char[] znak = new char[] { '.', '/', ' ' };
+
+				string rok = data.Split(znak)[2];
+				string miesiac = data.Split(znak)[1];
+				string dzien = data.Split(znak)[0];
 
 				data_od = new DateTime(int.Parse(rok), int.Parse(miesiac), int.Parse(dzien));
 
 				data = linie[linie.Length - 1];
-				rok = data.Split('.')[2];
-				miesiac = data.Split('.')[1];
-				dzien = data.Split('.')[0];
+				rok = data.Split(znak)[2];
+				miesiac = data.Split(znak)[1];
+				dzien = data.Split(znak)[0];
 
 				data_do = new DateTime(int.Parse(rok), int.Parse(miesiac), int.Parse(dzien));
 
-				Notatki.Add(new Notatka_Item()
+				/*if (data_od < Najstarsza_data)
 				{
-					Tytul = plik.Split(new string[] { "\\" }, StringSplitOptions.None)[plik.Split(new string[] { "\\" }, StringSplitOptions.None).Length - 1].Split('.')[0],
-					Tresc = tresc,
-					Data_od = data_od,
-					Data_do = data_do
-				}); ;
+					Najstarsza_data = data_od;
+				}*/
+				double roznica_dat = (data_od - Najstarsza_data).TotalDays;
+				string rdat = roznica_dat.ToString();
+				int Dni_od_poczatku = int.Parse(rdat) * 10;
+
+				Nodey.Add(new Node_Item()
+				{
+					Id = int.Parse(plik.Split(new string[] { "\\" }, StringSplitOptions.None)[plik.Split(new string[] { "\\" }, StringSplitOptions.None).Length - 1].Split('.')[0]),
+					NazwaZadania = tresc,
+					Szerokosc = int.Parse((data_do - data_od).TotalDays.ToString()) * 10,
+					Margines = new Thickness(Dni_od_poczatku, 0, 0, 0),
+					Kolor = taknie ? new SolidColorBrush(Color.FromRgb(0, 255, 0)) : new SolidColorBrush(Color.FromRgb(255, 0, 0))
+				});
 			}
 		}
 
@@ -97,12 +134,12 @@ namespace StuffToDo.ViewModel
 
 		private void RegisterMessages()
 		{
-			Messenger.Default.Register<Wykonano_Zadanie_Message>(this, msg =>
+			Messenger.Default.Register<Zadanie_Wykonane_Message>(this, msg =>
 			{
-				if (msg.SzukTytul != null)
+				if (msg.Tytul != null)
 				{
-					string url = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\StuffToDo\\Notatki\\" + msg.SzukTytul + ".txt";
-					File.Delete(url);
+					DodajZadanieViewModel dodajZadanieViewModel = new DodajZadanieViewModel();
+					dodajZadanieViewModel.FunDodajZadanie(msg.Tytul, msg.Tresc, msg.Data_od, msg.Data_do, msg.taknie);
 					Load();
 				}
 			});

@@ -7,12 +7,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Messaging;
 using StuffToDo.Assets;
 using StuffToDo.View;
 
 namespace StuffToDo.ViewModel
 {
-	public class UstawieniaViewModel:INotifyPropertyChanged
+	public class UstawieniaViewModel : INotifyPropertyChanged
 	{
 		public UstawieniaViewModel()
 		{
@@ -24,16 +25,13 @@ namespace StuffToDo.ViewModel
 			WybranyStyl = ComboBoxItems[0];
 
 			Wstecz = new RelayCommand(o => { WsteczHandler(); }, o => true);
-			Zapisz = new RelayCommand(o => { ZapiszHandler(); }, o => true);
 		}
 
 		private void WsteczHandler()
 		{
 			App.Current.MainWindow.Content = new MenuGlowneView();
-		}
-
-		private void ZapiszHandler()
-		{
+			((MenuGlowneView)App.Current.MainWindow.Content).Width = 850;
+			((MenuGlowneView)App.Current.MainWindow.Content).Height = 550;
 		}
 
 		private ComboBoxItem wybranyStyl;
@@ -69,18 +67,24 @@ namespace StuffToDo.ViewModel
 			set { comboBoxItems = value; }
 		}
 
-		private Brush kolorCzcionki;
 		public Brush KolorCzcionki
 		{
-			get { return kolorCzcionki; }
-			set { kolorCzcionki = value; OnPropertyRaised("KolorCzcionki"); }
+			get { return Global.KolorCzcionki; }
+			set
+			{
+				Global.KolorCzcionki = value;
+				OnPropertyRaised("KolorCzcionki");
+			}
 		}
 
-		private Brush kolorTla;
 		public Brush KolorTla
 		{
-			get { return kolorTla; }
-			set { kolorTla = value; OnPropertyRaised("KolorTla"); }
+			get { return Global.KolorTla; }
+			set
+			{
+				Global.KolorTla = value;
+				OnPropertyRaised("KolorTla");
+			}
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -93,6 +97,5 @@ namespace StuffToDo.ViewModel
 		}
 
 		public RelayCommand Wstecz { get; set; }
-		public RelayCommand Zapisz { get; set; }
 	}
 }

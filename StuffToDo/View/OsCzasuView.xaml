@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="StuffToDo.View.WyswietlNotatkeView"
+﻿<UserControl x:Class="StuffToDo.View.OsCzasuView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,31 +8,38 @@
              xmlns:Kontrolki="clr-namespace:StuffToDo.View.Kontrolki"
 			 mc:Ignorable="d"
 			 Height="450" Width="800"
-			 d:DataContext="{d:DesignInstance d:Type=viewModel:WyswietlNotatkeViewModel, IsDesignTimeCreatable=False}">
-	<Grid  Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+			 d:DataContext="{d:DesignInstance d:Type=viewModel:OsCzasuViewModel, IsDesignTimeCreatable=False}">
+	<Grid Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="auto"/>
 			<RowDefinition Height="*"/>
 			<RowDefinition Height="45px"/>
 		</Grid.RowDefinitions>
-		<Label Content="Lista notatek" 
+		<Label Content="Zadania na osi czasu" 
 			   FontSize="30px" 
 			   HorizontalContentAlignment="Center" 
 			   VerticalContentAlignment="Center" 
 						    Foreground="{Binding KolorCzcionki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
 						    Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-
-		<ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible" Grid.Row="1" Grid.ColumnSpan="5">
+		<ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" Grid.Row="1" Grid.ColumnSpan="5">
 			<StackPanel>
-				<ItemsControl ItemsSource="{Binding Notatki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+				<Label Content="{Binding Najstarsza_data,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+			   FontSize="15px" 
+			   HorizontalContentAlignment="Left" 
+			   VerticalContentAlignment="Center" 
+						    Foreground="{Binding KolorCzcionki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+						    Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+			   Grid.Row="1"/>
+				<ItemsControl ItemsSource="{Binding Nodey,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+							  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 					<ItemsControl.ItemsPanel>
 						<ItemsPanelTemplate>
-							<WrapPanel />
+							<StackPanel />
 						</ItemsPanelTemplate>
 					</ItemsControl.ItemsPanel>
 					<ItemsControl.ItemTemplate>
 						<DataTemplate>
-							<Kontrolki:Notatka Width="380px" Height="425px" Padding="0" Margin="2,2,2,2"/>
+							<Kontrolki:Node Height="60px" MinWidth="600px" Padding="0" Margin="2,2,2,2"/>
 						</DataTemplate>
 					</ItemsControl.ItemTemplate>
 				</ItemsControl>

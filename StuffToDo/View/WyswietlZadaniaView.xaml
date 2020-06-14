@@ -5,22 +5,42 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:StuffToDo.View"
              xmlns:viewModel="clr-namespace:StuffToDo.ViewModel"
+             xmlns:Kontrolki="clr-namespace:StuffToDo.View.Kontrolki"
 			 mc:Ignorable="d"
 			 Height="450" Width="800"
 			 d:DataContext="{d:DesignInstance d:Type=viewModel:WyswietlZadaniaViewModel, IsDesignTimeCreatable=False}">
-	<Grid>
+	<Grid Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
 		<Grid.RowDefinitions>
+			<RowDefinition Height="auto"/>
 			<RowDefinition Height="*"/>
-			<RowDefinition Height="3*"/>
-			<RowDefinition Height="*"/>
+			<RowDefinition Height="45px"/>
 		</Grid.RowDefinitions>
-		<Label Content="Nowa Notatka" FontSize="20px" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-		<TextBox Text="{Binding TekstNotatki}"
-					 FontSize="15px" 
-					 Grid.Row="1"/>
-		<StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right">
-			<Button Content="Dodaj notatke" Command="{Binding DodajNotatke}" Height="30px" Margin="5"/>
-			<Button Content="Wstecz" Command="{Binding Wstecz}" Height="30px" Margin="5"/>
-		</StackPanel>
+		<Label Content="Lista zadań" 
+			   FontSize="30px" 
+			   HorizontalContentAlignment="Center" 
+			   VerticalContentAlignment="Center" 
+						    Foreground="{Binding KolorCzcionki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+						    Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+
+		<ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible" Grid.Row="1" Grid.ColumnSpan="5">
+			<StackPanel>
+				<ItemsControl ItemsSource="{Binding Zadania,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+					<ItemsControl.ItemsPanel>
+						<ItemsPanelTemplate>
+							<WrapPanel />
+						</ItemsPanelTemplate>
+					</ItemsControl.ItemsPanel>
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<Kontrolki:Zadanie Width="780px" Height="50px" Padding="0" Margin="2,2,2,2"/>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
+			</StackPanel>
+		</ScrollViewer>
+
+		<Button Content="Wstecz" Command="{Binding Wstecz}" Grid.Row="2"
+						    Foreground="{Binding KolorCzcionki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+						    Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 	</Grid>
 </UserControl>

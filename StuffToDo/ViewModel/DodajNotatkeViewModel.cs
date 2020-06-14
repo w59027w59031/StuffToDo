@@ -27,6 +27,8 @@ namespace StuffToDo.ViewModel
 		{
 			AktualnaNotatka = "";
 			App.Current.MainWindow.Content = new MenuGlowneView();
+			((MenuGlowneView)App.Current.MainWindow.Content).Width = 850;
+			((MenuGlowneView)App.Current.MainWindow.Content).Height = 550;
 		}
 
 		public void DodajNotatkeHandler()
@@ -142,6 +144,22 @@ namespace StuffToDo.ViewModel
 			if (PropertyChanged != null)
 			{
 				PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
+			}
+		}
+
+		public Brush KolorTla
+		{
+			get { return Global.KolorTla; }
+			set { Global.KolorTla = value; OnPropertyRaised("KolorTla"); }
+		}
+
+		public Brush KolorCzcionki
+		{
+			get { return Global.KolorCzcionki; }
+			set
+			{
+				Global.KolorCzcionki = value;
+				OnPropertyRaised("KolorCzcionki");
 			}
 		}
 	}

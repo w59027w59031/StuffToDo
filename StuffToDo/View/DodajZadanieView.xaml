@@ -8,19 +8,51 @@
 			 mc:Ignorable="d"
 			 Height="450" Width="800"
 			 d:DataContext="{d:DesignInstance d:Type=viewModel:DodajZadanieViewModel, IsDesignTimeCreatable=False}">
-	<Grid>
+	<Grid Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*"/>
 			<RowDefinition Height="3*"/>
-			<RowDefinition Height="*"/>
+			<RowDefinition Height="45px"/>
 		</Grid.RowDefinitions>
-		<Label Content="Nowa Notatka" FontSize="20px" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-		<TextBox Text="{Binding TekstNotatki}"
+		<Label Content="Nowe Zadanie" 
+			   FontSize="20px" 
+			   HorizontalContentAlignment="Center" 
+			   VerticalContentAlignment="Center" 			   
+						    Foreground="{Binding KolorCzcionki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+						    Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+		<TextBox Text="{Binding NazwaZadania, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
 					 FontSize="15px" 
-					 Grid.Row="1"/>
-		<StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right">
-			<Button Content="Dodaj notatke" Command="{Binding DodajNotatke}" Height="30px" Margin="5"/>
-			<Button Content="Wstecz" Command="{Binding Wstecz}" Height="30px" Margin="5"/>
+					 Grid.Row="1"
+						    Foreground="{Binding KolorCzcionki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+						    Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+		<StackPanel Orientation="Horizontal" Grid.Row="2">
+			<Label Content="Data od"
+						    Foreground="{Binding KolorCzcionki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+						    Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+			<DatePicker SelectedDate="{Binding Data_od, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+					FontSize="15px"
+					Height="30px"
+					Validation.ErrorTemplate="{x:Null}"
+						    Foreground="{Binding KolorCzcionki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+						    Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+			<Label Content="Data do"
+						    Foreground="{Binding KolorCzcionki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+						    Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+			<DatePicker SelectedDate="{Binding Data_do, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+					FontSize="15px"
+					Height="30px"
+					Validation.ErrorTemplate="{x:Null}"
+						    Foreground="{Binding KolorCzcionki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+						    Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+		</StackPanel>
+
+		<StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Right">
+			<Button Content="Dodaj zadanie" Command="{Binding DodajZadanie}" Height="30px" Margin="5"
+						    Foreground="{Binding KolorCzcionki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+						    Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+			<Button Content="Wstecz" Command="{Binding Wstecz}" Height="30px" Margin="5"
+						    Foreground="{Binding KolorCzcionki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+						    Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 		</StackPanel>
 	</Grid>
 </UserControl>

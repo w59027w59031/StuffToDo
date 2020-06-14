@@ -18,16 +18,23 @@
 			   FontSize="30px" 
 			   HorizontalContentAlignment="Center" 
 			   VerticalContentAlignment="Center" 
-			   Foreground="DarkGoldenrod"/>
+						    Foreground="{Binding KolorCzcionki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+						    Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 		<TextBox Text="{Binding Tresc, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
 			   x:Name="x_Tresc"
-				 Grid.Row="1"/>
+				 Grid.Row="1"
+						    Foreground="{Binding KolorCzcionki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+						    Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 		<StackPanel Grid.Row="2" Orientation="Horizontal">
 			<DatePickerTextBox Text="{Binding Data_od, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-			   x:Name="x_Data_od" Width="200px"/>
+			   x:Name="x_Data_od" Width="200px"
+						    Foreground="{Binding KolorCzcionki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+						    Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 			<DatePickerTextBox Text="{Binding Data_do, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-			   x:Name="x_Data_do" Width="200px"/>
+			   x:Name="x_Data_do" Width="200px"
+						    Foreground="{Binding KolorCzcionki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+						    Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 		</StackPanel>
-		<Button Grid.Row="3" Content="Zrobione" Click="Button_Click"/>
+		<Button Grid.Row="3" Content="Usuń" Click="Button_Click"/>
 	</Grid>
 </UserControl>

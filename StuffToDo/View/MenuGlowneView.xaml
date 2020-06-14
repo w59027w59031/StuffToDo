@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:StuffToDo"
         mc:Ignorable="d" Height="450" Width="800"
 		d:DataContext="{d:DesignInstance d:Type=viewModel:MenuGlowneViewModel, IsDesignTimeCreatable=False}">
-	<Grid>
+	<Grid Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="*"/>
 			<ColumnDefinition Width="*"/>
@@ -17,15 +17,32 @@
 			<RowDefinition Height="*"/>
 			<RowDefinition Height="auto"/>
 		</Grid.RowDefinitions>
-		<Label Content="Sup!! Mate!!! || StuffToDo" FontSize="30px" Foreground="DarkGoldenrod"/>
+		<Label Content="Sup!! Mate!!! || StuffToDo" 
+			   FontSize="30px" 
+						    Foreground="{Binding KolorCzcionki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+						    Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 		<StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center">
-			<Button Content="Oś czasu" Command="{Binding PrzejdzDoOsiCzasu}" Height="30px"/>
-			<Button Content="Dodaj notatke" Command="{Binding PrzejdzDoDodawaniaNotatki}" Height="30px"/>
-			<Button Content="Wyświetl listę notatek" Command="{Binding PrzejdzDoNotatek}" Height="30px"/>
-			<Button Content="Dodaj zadanie" Command="{Binding PrzejdzDoDodawaniaZadania}" Height="30px"/>
-			<Button Content="Wyświetl listę zadań" Command="{Binding PrzejdzDoListyZadan}" Height="30px"/>
-			<Button Content="Ustawienia" Command="{Binding PrzejdzDoUstawien}" Height="30px"/>
-			<Button Content="Wyjdź" Command="{Binding Zamknij}" Height="30px"/>
+			<Button Content="Oś czasu" Command="{Binding PrzejdzDoOsiCzasu}" Height="30px"
+						    Foreground="{Binding KolorCzcionki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+						    Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+			<Button Content="Dodaj notatke" Command="{Binding PrzejdzDoDodawaniaNotatki}" Height="30px"
+						    Foreground="{Binding KolorCzcionki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+						    Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+			<Button Content="Wyświetl listę notatek" Command="{Binding PrzejdzDoNotatek}" Height="30px"
+						    Foreground="{Binding KolorCzcionki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+						    Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+			<Button Content="Dodaj zadanie" Command="{Binding PrzejdzDoDodawaniaZadania}" Height="30px"
+						    Foreground="{Binding KolorCzcionki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+						    Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+			<Button Content="Wyświetl listę zadań" Command="{Binding PrzejdzDoListyZadan}" Height="30px"
+						    Foreground="{Binding KolorCzcionki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+						    Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+			<Button Content="Ustawienia" Command="{Binding PrzejdzDoUstawien}" Height="30px"
+						    Foreground="{Binding KolorCzcionki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+						    Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+			<Button Content="Wyjdź" Command="{Binding Zamknij}" Height="30px"
+						    Foreground="{Binding KolorCzcionki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+						    Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 		</StackPanel>
 
 	</Grid>

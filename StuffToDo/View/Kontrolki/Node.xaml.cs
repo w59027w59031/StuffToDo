@@ -3,11 +3,13 @@ using StuffToDo.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -21,33 +23,18 @@ namespace StuffToDo.View.Kontrolki
 	/// <summary>
 	/// Interaction logic for UstawieniaView.xaml
 	/// </summary>
-	public partial class Notatka : UserControl
+	public partial class Node : UserControl
 	{
-		public string Tytul { get; set; }
-		public string Tresc { get; set; }
-		public DateTime Data_od { get; set; }
-		public DateTime Data_do { get; set; }
+		public int Id { get; set; }
+		public string NazwaZadania { get; set; }
+		public int Szerokosc { get; set; }
+		public Thickness Margines { get; set; }
+		public bool TakNie { get; set; }
+		public SolidColorBrush Kolor { get; set; }
 
-		public Notatka()
+		public Node()
 		{
 			InitializeComponent();
-		}
-
-		private void Button_Click(object sender, RoutedEventArgs e)
-		{
-			try
-			{
-				Messenger.Default.Send(new Wykonano_Zadanie_Message
-				{
-					SzukTytul = (string)x_Tytul.Content,
-					SzukTresc = x_Tresc.Text,
-					SzukData_od = x_Data_od.Text,
-					SzukData_do = x_Data_do.Text
-				});
-			}catch(Exception ex)
-			{
-				System.Windows.MessageBox.Show(ex.Message);
-			}
 		}
 
 		public Brush KolorTla

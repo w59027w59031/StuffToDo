@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,7 +42,7 @@ namespace StuffToDo.ViewModel
 
 		public void PrzejdzDoOsiCzasuHandler()
 		{
-			System.Windows.MessageBox.Show("Test1");
+			App.Current.MainWindow.Content = new OsCzasuView();
 		}
 		public void ZamknijHandler()
 		{
@@ -67,5 +68,30 @@ namespace StuffToDo.ViewModel
 		public RelayCommand PrzejdzDoDodawaniaNotatki { get; set; }
 		public RelayCommand PrzejdzDoOsiCzasu { get; set; }
 		public RelayCommand Zamknij { get; set; }
+
+		public event PropertyChangedEventHandler PropertyChanged;
+		private void OnPropertyRaised(string propertyname)
+		{
+			if (PropertyChanged != null)
+			{
+				PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
+			}
+		}
+
+		public Brush KolorTla
+		{
+			get { return Global.KolorTla; }
+			set { Global.KolorTla = value; OnPropertyRaised("KolorTla"); }
+		}
+
+		public Brush KolorCzcionki
+		{
+			get { return Global.KolorCzcionki; }
+			set
+			{
+				Global.KolorCzcionki = value;
+				OnPropertyRaised("KolorCzcionki");
+			}
+		}
 	}
 }

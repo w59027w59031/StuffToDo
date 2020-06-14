@@ -1,5 +1,4 @@
-﻿using GalaSoft.MvvmLight.Messaging;
-using StuffToDo.ViewModel;
+﻿using StuffToDo.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,15 +14,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace StuffToDo
+namespace StuffToDo.View
 {
 	/// <summary>
-	/// Interaction logic for MainWindow.xaml
+	/// Interaction logic for UstawieniaView.xaml
 	/// </summary>
-	public partial class MainWindow : Window
+	public partial class OsCzasuView : UserControl
 	{
-		public MainWindow()
+		public OsCzasuView()
 		{
+			DataContext = new OsCzasuViewModel();
 			InitializeComponent();
 		}
 	}

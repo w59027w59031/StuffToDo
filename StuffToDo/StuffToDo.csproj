@@ -72,11 +72,24 @@
     </ApplicationDefinition>
     <Compile Include="Assets\Kolory.cs" />
     <Compile Include="ComboBoxItem.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="ViewModel\OsCzasuViewModel.cs" />
+    <Compile Include="View\Kontrolki\Node.xaml.cs">
+      <DependentUpon>Node.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\OsCzasuView.xaml.cs">
+      <DependentUpon>OsCzasuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Node_Item.cs" />
+    <Compile Include="Zadanie_Item.cs" />
     <Compile Include="Notatka_Item.cs" />
     <Compile Include="ViewModel\DodajZadanieViewModel.cs" />
     <Compile Include="ViewModel\WyswietlNotatkeViewModel.cs" />
     <Compile Include="ViewModel\WyswietlZadaniaViewModel.cs" />
     <Compile Include="ViewModel\DodajNotatkeViewModel.cs" />
+    <Compile Include="View\Kontrolki\Zadanie.xaml.cs">
+      <DependentUpon>Zadanie.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Kontrolki\Notatka.xaml.cs">
       <DependentUpon>Notatka.xaml</DependentUpon>
     </Compile>
@@ -104,7 +117,20 @@
       <DependentUpon>UstawieniaView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Wykonano_Zadanie_Message.cs" />
+    <Compile Include="Zadanie_Wykonane_Message.cs" />
+    <Page Include="View\Kontrolki\Node.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Kontrolki\Zadanie.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\Kontrolki\Notatka.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\OsCzasuView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

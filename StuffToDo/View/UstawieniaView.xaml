@@ -18,13 +18,17 @@
 			   FontSize="20px" 
 			   HorizontalContentAlignment="Center" 
 			   VerticalContentAlignment="Center" 
-			   Foreground="{Binding KolorCzcionki, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+						    Foreground="{Binding KolorCzcionki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+						    Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 		<StackPanel Orientation="Vertical" Grid.Row="1">
-			<ComboBox ItemsSource="{Binding ComboBoxItems, Mode=TwoWay}" SelectedItem="{Binding WybranyStyl}" DisplayMemberPath="Tekst"/>
+			<ComboBox ItemsSource="{Binding ComboBoxItems, Mode=TwoWay}" SelectedItem="{Binding WybranyStyl}" DisplayMemberPath="Tekst"
+						    Foreground="{Binding KolorCzcionki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+						    Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 		</StackPanel>
 		<StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
-			<Button Content="Zapisz" Command="{Binding Zapisz}" Height="30px" Margin="5"/>
-			<Button Content="Wstecz" Command="{Binding Wstecz}" Height="30px" Margin="5"/>
+			<Button Content="Wstecz" Command="{Binding Wstecz}" Height="30px" Margin="5"
+						    Foreground="{Binding KolorCzcionki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+						    Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 		</StackPanel>
 	</Grid>
 </UserControl>
