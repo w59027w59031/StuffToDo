@@ -17,7 +17,7 @@
 			<RowDefinition Height="*"/>
 			<RowDefinition Height="auto"/>
 		</Grid.RowDefinitions>
-		<Label Content="Sup!! Mate!!! || StuffToDo" 
+		<Label Grid.ColumnSpan="2" HorizontalAlignment="Center"  Content="Witaj! || Stuff To Do" 
 			   FontSize="30px" 
 						    Foreground="{Binding KolorCzcionki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
 						    Background="{Binding KolorTla,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>

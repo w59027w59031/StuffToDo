@@ -44,6 +44,10 @@ namespace StuffToDo.ViewModel
 			Notatki = new ObservableCollection<Notatka_Item>();
 
 			string Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\StuffToDo\\Notatki";
+			if (!Directory.Exists(Dir))
+			{
+				Directory.CreateDirectory(Dir);
+			}
 			string[] pliki = Directory.GetFiles(Dir);
 
 			foreach (string plik in pliki)
